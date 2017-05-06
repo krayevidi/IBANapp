@@ -1,0 +1,21 @@
+---
+- name: Update packages
+  apt:
+    update_cache: yes
+    upgrade: dist
+
+- name: Install core packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - build-essential
+    - vim
+    - apt-transport-https
+    - libcurl4-gnutls-dev
+    - libxml2-dev
+    - libxslt1-dev
+    - libffi-dev
+    - unzip
+    - gettext
+    - libssl-dev

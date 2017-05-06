@@ -1,0 +1,21 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Python template
+*.py[cod]
+*$py.class
+
+# Django stuff:
+local_settings.py
+
+### Vagrant template
+.vagrant/
+### JetBrains template
+.idea/
+
+### Ansible template
+*.retry
+### Yeoman template
+node_modules/
+bower_components/
+dist/
+### Others
+*.log

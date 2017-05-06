@@ -1,0 +1,2 @@
+---
+project_name: "{{ V_PROJECT_NAME }}"
