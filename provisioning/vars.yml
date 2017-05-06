@@ -1,2 +1,6 @@
 ---
 project_name: "{{ V_PROJECT_NAME }}"
+db:
+ user: "{{ V_PROJECT_NAME }}"
+ name: "{{ V_PROJECT_NAME }}"
+ password: "{{ V_PROJECT_NAME }}"

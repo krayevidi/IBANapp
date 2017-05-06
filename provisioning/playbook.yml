@@ -6,3 +6,4 @@
     - vars.yml
   roles:
     - core
+    - postgresql
