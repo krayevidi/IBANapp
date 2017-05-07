@@ -12,3 +12,5 @@ db:
 backend:
   root_dir: "{{ project_src_dir }}/backend"
   env_root_dir: "{{ project_src_dir }}/backend/.envs/{{ project_name }}"
+
+frontend_root_dir: "{{ project_src_dir }}/frontend"

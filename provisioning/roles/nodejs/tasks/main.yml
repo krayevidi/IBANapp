@@ -30,3 +30,12 @@
     - yo
     - generator-karma
     - generator-angular
+
+- name: Install local npm packages
+  npm:
+    path: "{{ frontend_root_dir }}"
+    state: present
+
+- name: Install bower dependencies
+  bower:
+    path: "{{ frontend_root_dir }}"
