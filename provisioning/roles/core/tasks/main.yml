@@ -19,6 +19,7 @@
     - unzip
     - gettext
     - libssl-dev
+    - git
 
 - name: Add venv activation to .profile file
   blockinfile:
