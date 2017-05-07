@@ -20,5 +20,6 @@ local_settings.py
 node_modules/
 bower_components/
 dist/
+.tmp/
 ### Others
 *.log
