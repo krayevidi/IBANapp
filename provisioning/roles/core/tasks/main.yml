@@ -19,3 +19,11 @@
     - unzip
     - gettext
     - libssl-dev
+
+- name: Add venv activation to .profile file
+  blockinfile:
+    dest: "{{ default_user_home_dir }}/.profile"
+    block: |
+      source {{ backend.env_root_dir }}/bin/activate
+      cd {{ project_src_dir }}
+    marker: "### {mark} VENV ACTIVATION ###"
