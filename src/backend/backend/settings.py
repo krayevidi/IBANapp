@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 3rd party apps
+    'rest_framework',
+    'social_django',
+    'rest_social_auth',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +125,40 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# django rest framework settings
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+}
+
+
+# social auth settings
+SOCIAL_AUTH_RAISE_EXCEPTIONS = DEBUG
+REST_SOCIAL_LOG_AUTH_EXCEPTIONS = DEBUG
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ""
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ""
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+    'email'
+]
+
+# cors headers settings
+CORS_ORIGIN_ALLOW_ALL = True
+
+# local settings
+try:
+    from .local_settings import *
+except ImportError as e:
+    pass
