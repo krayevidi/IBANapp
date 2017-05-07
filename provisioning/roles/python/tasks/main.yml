@@ -22,3 +22,27 @@
     requirements: "{{ backend.root_dir }}/requirements.txt"
     virtualenv: "{{ backend.env_root_dir }}"
     virtualenv_command: /usr/bin/python3.5 -m venv
+
+- name: Update venv activate file
+  blockinfile:
+    dest: "{{ backend.env_root_dir }}/bin/activate"
+    block: |
+      export DB_NAME={{ db.name }}
+      export DB_USER={{ db.user }}
+      export DB_PASSWORD={{ db.password }}
+    marker: "### {mark} ADDED BY ANSIBLE PYTHON ROLE ###"
+
+- name: Run django migrations
+  django_manage:
+    virtualenv: "{{ backend.env_root_dir }}"
+    app_path: "{{ backend.root_dir }}"
+    command: migrate
+  environment:
+    DB_NAME: "{{ db.name }}"
+    DB_USER: "{{ db.user }}"
+    DB_PASSWORD: "{{ db.password }}"
+
+- name: Create django local settings
+  template:
+    src: files/local_settings.j2
+    dest: "{{ backend.root_dir }}/backend/local_settings.py"

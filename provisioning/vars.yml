@@ -1,4 +1,5 @@
 ---
+default_user: vagrant
 default_user_home_dir: "/home/vagrant"
 project_name: "{{ V_PROJECT_NAME }}"
 project_src_dir: "{{ V_PROJECT_SRC_DIR }}"
