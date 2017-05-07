@@ -1,0 +1,8 @@
+---
+- name: Autoremove unused packages
+  become: yes
+  command: apt-get -y autoremove
+
+- name: Clean apt
+  become: yes
+  command: apt-get clean
