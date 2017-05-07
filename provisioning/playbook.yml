@@ -7,3 +7,4 @@
   roles:
     - core
     - postgresql
+    - python

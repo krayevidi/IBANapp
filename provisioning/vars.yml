@@ -1,6 +1,13 @@
 ---
+default_user_home_dir: "/home/vagrant"
 project_name: "{{ V_PROJECT_NAME }}"
+project_src_dir: "{{ V_PROJECT_SRC_DIR }}"
+
 db:
  user: "{{ V_PROJECT_NAME }}"
  name: "{{ V_PROJECT_NAME }}"
  password: "{{ V_PROJECT_NAME }}"
+
+backend:
+  root_dir: "{{ project_src_dir }}/backend"
+  env_root_dir: "{{ project_src_dir }}/backend/.envs/{{ project_name }}"

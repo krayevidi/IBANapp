@@ -1,0 +1,6 @@
+Django==1.10.7
+psycopg2==2.7.1
+django-cors-headers==2.0.2
+djangorestframework==3.6.2
+djangorestframework-jwt==1.10.0
+rest-social-auth==1.1.0

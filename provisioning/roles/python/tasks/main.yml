@@ -1,0 +1,24 @@
+---
+- name: Add python repository
+  apt_repository:
+    repo: ppa:fkrull/deadsnakes
+
+- name: Update package list
+  apt:
+    update_cache: yes
+
+- name: Install python 3.5
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - python3.5
+    - python3.5-dev
+    - python3.5-venv
+    - ipython3
+
+- name: Install requirements
+  pip:
+    requirements: "{{ backend.root_dir }}/requirements.txt"
+    virtualenv: "{{ backend.env_root_dir }}"
+    virtualenv_command: /usr/bin/python3.5 -m venv

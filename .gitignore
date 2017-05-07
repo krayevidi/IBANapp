@@ -6,6 +6,9 @@
 # Django stuff:
 local_settings.py
 
+### Virtual environment template
+.envs
+
 ### Vagrant template
 .vagrant/
 ### JetBrains template

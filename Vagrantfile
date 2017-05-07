@@ -22,6 +22,7 @@ Vagrant.configure(2) do |config|
     ansible.playbook = "provisioning/playbook.yml"
     ansible.extra_vars = {
       V_PROJECT_NAME: PROJECT_NAME,
+      V_PROJECT_SRC_DIR: PROJECT_SRC_DIR,
     }
   end
 end
