@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'social_django',
     'rest_social_auth',
+    'django_nose',
     # local apps
     'bank_accounts',
 ]
@@ -128,6 +129,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
@@ -144,7 +146,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ),
 }
-
 
 # social auth settings
 SOCIAL_AUTH_RAISE_EXCEPTIONS = DEBUG
