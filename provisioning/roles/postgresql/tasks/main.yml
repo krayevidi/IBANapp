@@ -34,10 +34,11 @@
   postgresql_db:
     name: "{{ db.name }}"
 
-- name: Create database user "{{ db.user }}" iwth password "{{ db.password }}"
+- name: Create database user "{{ db.user }}" with password "{{ db.password }}"
   become_user: postgres
   postgresql_user:
-    db: "{{ db.name }}"
     name: "{{ db.user }}"
     password: "{{ db.password }}"
+    db: "{{ db.name }}"
     priv: ALL
+    role_attr_flags: CREATEDB
