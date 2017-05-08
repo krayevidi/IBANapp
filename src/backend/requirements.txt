@@ -4,3 +4,4 @@ django-cors-headers==2.0.2
 djangorestframework==3.6.2
 djangorestframework-jwt==1.10.0
 rest-social-auth==1.1.0
+django-localflavor==1.4.1

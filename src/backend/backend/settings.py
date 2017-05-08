@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'social_django',
     'rest_social_auth',
+    # local apps
+    'bank_accounts',
 ]
 
 MIDDLEWARE = [
