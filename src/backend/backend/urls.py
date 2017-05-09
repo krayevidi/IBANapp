@@ -19,4 +19,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/login/', include('rest_social_auth.urls_jwt')),
+    url(r'^api/bank_accounts/', include('bank_accounts.urls',
+                                        namespace='bank-accounts-api')),
 ]

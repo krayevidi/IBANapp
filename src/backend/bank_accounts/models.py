@@ -11,5 +11,8 @@ class Account(models.Model):
 
     manager = models.ForeignKey(settings.AUTH_USER_MODEL)
 
+    class Meta:
+        ordering = ['first_name']
+
     def __str__(self):
         return str('{} {}'.format(self.first_name, self.last_name))
