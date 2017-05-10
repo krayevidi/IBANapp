@@ -8,6 +8,7 @@
 // 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
+  grunt.loadNpmTasks('grunt-ng-constant');
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
@@ -27,6 +28,22 @@ module.exports = function (grunt) {
 
   // Define the configuration for all the tasks
   grunt.initConfig({
+    ngconstant: {
+      default: {
+        options: {
+          name: 'constantsApp',
+          dest: '<%= yeoman.app %>/scripts/constants_app.js',
+          constants: function () {
+            var constants = grunt.file.readJSON('constants.json');
+            if (grunt.file.exists('local_constants.json')){
+              var localConstants = grunt.file.readJSON('local_constants.json');
+              constants = Object.assign(constants, localConstants);
+            }
+            return constants;
+          }
+        }
+      }
+    },
 
     // Project settings
     yeoman: appConfig,
@@ -64,6 +81,13 @@ module.exports = function (grunt) {
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
+      },
+      constants: {
+        files: [
+          'constants.json',
+          'local_constants.json'
+        ],
+        tasks: ['ngconstant']
       }
     },
 
@@ -433,6 +457,7 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
+      'ngconstant',
       'clean:server',
       'wiredep',
       'concurrent:server',

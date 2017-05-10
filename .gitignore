@@ -21,5 +21,7 @@ node_modules/
 bower_components/
 dist/
 .tmp/
+local_constants.json
+constants_app.js
 ### Others
 *.log

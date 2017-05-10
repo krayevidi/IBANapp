@@ -39,3 +39,8 @@
 - name: Install bower dependencies
   bower:
     path: "{{ frontend_root_dir }}"
+
+- name: Create local constants (settings) file
+  template:
+    src: files/local_constants.j2
+    dest: "{{ frontend_root_dir }}/local_constants.json"

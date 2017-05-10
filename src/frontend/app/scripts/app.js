@@ -10,6 +10,7 @@
  */
 angular
   .module('frontendApp', [
+    'constantsApp',
     'ngAnimate',
     'ngAria',
     'ngCookies',
