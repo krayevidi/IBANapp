@@ -10,6 +10,12 @@
 module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-ng-constant');
 
+  // HTTP proxy settings
+  var proxy = require('http-proxy-middleware');
+  var apiProxyOptions = {
+    target: 'http://localhost:8000'
+  };
+
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
@@ -104,6 +110,7 @@ module.exports = function (grunt) {
           open: true,
           middleware: function (connect) {
             return [
+              proxy(['/api', '/media', '/static'], apiProxyOptions),
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
