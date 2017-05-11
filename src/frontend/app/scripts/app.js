@@ -24,7 +24,9 @@ angular
       'view-segment',
       'restangular'
     ])
-    .config(function ($authProvider, $routeSegmentProvider, RestangularProvider, API_ROOT, GOOGLE_API_CLIENT_ID) {
+    .config(function ($locationProvider, $authProvider, $routeSegmentProvider, RestangularProvider, API_ROOT, GOOGLE_API_CLIENT_ID) {
+      // push state settings
+      $locationProvider.html5Mode(true);
       // restangular settings
       RestangularProvider.setBaseUrl(API_ROOT);
       RestangularProvider.setRequestSuffix('/');

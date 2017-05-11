@@ -10,6 +10,7 @@
 module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-ng-constant');
 
+  var modRewrite = require('connect-modrewrite');
   // HTTP proxy settings
   var proxy = require('http-proxy-middleware');
   var apiProxyOptions = {
@@ -111,6 +112,7 @@ module.exports = function (grunt) {
           middleware: function (connect) {
             return [
               proxy(['/api', '/media', '/static'], apiProxyOptions),
+              modRewrite(['^[^\.]*$ /']),
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
