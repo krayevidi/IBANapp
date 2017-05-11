@@ -41,8 +41,17 @@ angular
         redirectUri: window.location.origin + '/'
       });
       // routes
-      $routeSegmentProvider.when('/', 'main')
+      $routeSegmentProvider
+          .when('/', 'main')
+          .when('/bank_accounts/', 'main.bank_accounts_list')
           .segment('main', {
             templateUrl: 'views/main.html'
-          });
+          })
+          .within()
+          .segment('bank_accounts_list', {
+            default: true,
+            templateUrl: 'views/bank_accounts/list.html'
+
+          })
+      ;
     });
