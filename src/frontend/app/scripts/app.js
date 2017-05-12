@@ -22,9 +22,11 @@ angular
       'satellizer',
       'route-segment',
       'view-segment',
-      'restangular'
+      'restangular',
+      'ui.bootstrap'
     ])
-    .config(function ($locationProvider, $authProvider, $routeSegmentProvider, RestangularProvider, API_ROOT, GOOGLE_API_CLIENT_ID) {
+    .config(function ($locationProvider, $authProvider, $routeSegmentProvider,
+                      RestangularProvider, API_ROOT, GOOGLE_API_CLIENT_ID) {
       // push state settings
       $locationProvider.html5Mode(true);
       // restangular settings
@@ -44,6 +46,7 @@ angular
       $routeSegmentProvider
           .when('/', 'main')
           .when('/bank_accounts/', 'main.bank_accounts_list')
+          .when('/bank_accounts/:id/', 'main.bank_accounts_list.create_edit')
           .segment('main', {
             templateUrl: 'views/main.html'
           })
@@ -51,7 +54,10 @@ angular
           .segment('bank_accounts_list', {
             default: true,
             templateUrl: 'views/bank_accounts/list.html'
-
           })
-      ;
+          .within()
+          .segment('create_edit', {
+            controller: 'BankAccountsCreateEditCtrl',
+            dependencies: ['id']
+          });
     });
