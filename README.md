@@ -20,7 +20,7 @@ $ vagrant up --provider=virtualbox
 Wait a few minutes for the magic to happen.
 
 ### Required settings
-
+######  >>> move along, it already contains my demo credentials(see the last commit)
 - [google oauth2 credentials](https://developers.google.com/identity/protocols/OAuth2)
 
 backend: `src/backend/backend/local_settings.py`
